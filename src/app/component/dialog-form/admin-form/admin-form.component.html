@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Add Admin Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="adminForm">
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="" [formControl]="firstName" required>
+              <mat-error *ngIf="firstName.invalid">First Name Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="" [formControl]="lastName" required>
+              <mat-error *ngIf="lastName.invalid">Last Name Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Email Address</mat-label>
+              <input matInput placeholder="" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Privilege</mat-label>
+              <input matInput placeholder="" [formControl]="privilege" required>
+              <mat-error *ngIf="privilege.invalid">Privilege Required</mat-error>
+            </mat-form-field>
+        </div>
+    </form> 
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button class="btn btn-danger mr-2"  mat-dialog-close>Cancel</button>
+    <button class="btn btn-success" (click)="addAdmin()">{{actionBtn}}</button>
+</div>

@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add Access Rule Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="accessRuleForm">
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Rule Name</mat-label>
+              <input matInput placeholder="" [formControl]="ruleName" required>
+              <mat-error *ngIf="ruleName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Permission</mat-label>
+                <mat-select [formControl]="permission" required>
+                  <mat-option [value]="true">True</mat-option>
+                  <mat-option [value]="false">False</mat-option>
+                </mat-select>
+                <mat-error *ngIf="permission.hasError('required')">You must make a selection</mat-error>
+            </mat-form-field>
+        </div>
+    </form> 
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button class="btn btn-danger mr-2"  mat-dialog-close>Cancel</button>
+    <button class="btn btn-success" (click)="addAccessRule()">{{actionBtn}}</button>
+</div>

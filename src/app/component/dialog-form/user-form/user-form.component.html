@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add User Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="" [formControl]="firstName" required>
+              <mat-error *ngIf="firstName.invalid">First Name Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="" [formControl]="lastName" required>
+              <mat-error *ngIf="lastName.invalid">Last Name Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Email Address</mat-label>
+              <input matInput placeholder="" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Attached Customer Id</mat-label>
+              <input matInput placeholder="" [formControl]="attachedCustomerId" required>
+              <mat-error *ngIf="attachedCustomerId.invalid">Attachemend Customer Id Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>User Group</mat-label>
+                <mat-select [formControl]="userGroupId">
+                  <mat-option *ngFor="let group of userGroups" [value]="group.id">{{group.groupName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="userGroupId.hasError('required')">You must select user Group</mat-error>
+            </mat-form-field>
+        </div>
+        
+    </form> 
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button class="btn btn-danger mr-2"  mat-dialog-close>Cancel</button>
+    <button class="btn btn-success" (click)="addUser()">{{actionBtn}}</button>
+</div>
